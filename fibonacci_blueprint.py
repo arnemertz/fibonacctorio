@@ -34,6 +34,8 @@ def tiles(radius):
         while x <= maxblocks_x / 2 - 1:
             if filled(x, y, radius):
                 tiles.append({"position": {"x": int(x-0.5), "y": int(y-0.5)}, "name": true_tile})
+            elif filled(x+1, y, radius) or filled(x+2, y, radius) or filled(x, y+1, radius) or filled(x, y+2, radius):
+                tiles.append({"position": {"x": int(x-0.5), "y": int(y-0.5)}, "name": false_tile})
             x += 1
         y += 1
     return tiles
