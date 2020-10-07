@@ -40,7 +40,11 @@ def tiles(radius):
     return tiles
 
 
-def blueprint(radius):
+def fib(N):
+    return fib(N-1) + fib(N-2) if N>2 else 1
+
+def blueprint(N):
+    radius = fib(N)
     assert(radius <= 9999)
 
     json_object={"blueprint":{"icons":[],"tiles":[],"item":"blueprint","version":281474976710656},"version_byte":"0"}
@@ -53,12 +57,12 @@ def blueprint(radius):
 
     return Blueprint(json_object)
 
-book=BlueprintBook.from_json_file('init_blueprintbook.json')
+
+
+book=BlueprintBook.from_exchange_file('init_blueprintbook.txt')
 for N in range(6,7):
-    bp = blueprint(5)
+    bp = blueprint(N)
     book.add_blueprint(bp)
 
-
 book.replace_indexes()
-book.to_json_file('output/blueprintbook.json')
 book.to_exchange_file('output/blueprintbook.txt')
