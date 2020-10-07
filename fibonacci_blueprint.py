@@ -51,9 +51,14 @@ def blueprint(radius):
 
     blueprint["tiles"] = tiles(radius)
 
-    return json_object
+    return Blueprint(json_object)
 
 book=BlueprintBook.from_json_file('init_blueprintbook.json')
-bp = Blueprint(blueprint(5), "0")
-bp.to_exchange_file('output/blueprint5.txt')
+for N in range(6,7):
+    bp = blueprint(5)
+    book.add_blueprint(bp)
+
+
+book.replace_indexes()
+book.to_json_file('output/blueprintbook.json')
 book.to_exchange_file('output/blueprintbook.txt')
