@@ -48,6 +48,12 @@ def icons(radius):
     digits=[int(d) for d in str(radius)]
     return [ icon(index, digit) for index,digit in enumerate(digits) ]
 
+def pole(x, y, num):
+    return { "entity_number": num, "name":"big-electric-pole", "position":{ "x":x, "y":y } }
+
+def entities(radius):
+    return [pole(radius-2, 0, 1), pole(0, radius-2, 2)]
+
 def fib(N):
     return fib(N-1) + fib(N-2) if N>2 else 1
 
@@ -60,6 +66,7 @@ def blueprint(N, full=False, all=False):
     blueprint["icons"] = icons(radius)
     blueprint["tiles"] = tiles(radius, full, all)
     blueprint["label"] = "fib(%d) - %s" % (N, "all" if all else "full" if full else "border")
+    blueprint["entities"] = entities(radius)
 
     return Blueprint(json_object)
 
