@@ -1,3 +1,6 @@
+# uses http://github.com/ericmburgess/python-factorio/ (as factorio.blueprints)
+# circle algorithm adapted from https://github.com/donatj/Circle-Generator
+
 from factorio.blueprints import *
 import json
 import math
